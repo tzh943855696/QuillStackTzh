@@ -3,6 +3,30 @@
   "articles": [
     {
       "id": "1",
+      "slug": "quillstack-blog-info",
+      "title": "INFO的使用",
+      "contentPath": "getting-started.md",
+      "publishedAt": "2024-08-02T12:00:00.000Z",
+      "excerpt": "这是一篇关于如何使用 QuillStack 创建博客的入门指南，以及Markdown渲染测试。",
+      "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb2RlfGVufDB8fHx8MTc2MjE0NTkwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code laptop",
+      "categoryId": "tutorial",
+      "tags": ["Next.js", "教程", "部署"]
+    },
+    {
+      "id": "2",
+      "slug": "admonitions-demo",
+      "title": "Admonitions 提示框功能演示",
+      "contentPath": "admonitions-demo.md",
+      "publishedAt": "2024-08-03T12:00:00.000Z",
+      "excerpt": "演示 QuillStack 的 Admonitions 提示框功能，支持 INFO、WARNING、TIP、DANGER、NOTE 五种类型。",
+      "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb2RlfGVufDB8fHx8MTc2MjE0NTkwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code screen",
+      "categoryId": "tutorial",
+      "tags": ["Markdown", "功能演示"]
+    },
+    {
+      "id": "3",
       "slug": "quillstack-blog-getting-started",
       "title": "QuillStack Blog 入门指南",
       "contentPath": "README_zh.md",

@@ -202,9 +202,9 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
   };
 
   return (
-    <nav className={cn('toc', className)}>
-      <h2 className="mb-3 text-sm font-semibold text-foreground">目录</h2>
-      <div className="border-l border-border pl-1">
+    <nav className={cn('toc flex flex-col', className)}>
+      <h2 className="mb-3 text-sm font-semibold text-foreground flex-shrink-0">目录</h2>
+      <div className="border-l border-border pl-1 overflow-y-auto max-h-[calc(100vh-20rem)] scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
         <TOCBranch
           items={tocTree}
           activeId={activeId}

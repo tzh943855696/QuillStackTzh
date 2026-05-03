@@ -1,9 +1,11 @@
 import { marked } from 'marked';
 import { extractHeadings } from '@/lib/toc';
 import { setupMarkedWithBilibili } from '@/lib/bilibili-extension';
+import { setupMarkedWithAdmonition } from '@/lib/markdown-extensions';
 
-// 初始化 marked 并应用 Bilibili 扩展
+// 初始化 marked 并应用扩展
 setupMarkedWithBilibili();
+setupMarkedWithAdmonition();
 
 type MarkdownRendererProps = {
   content: string;

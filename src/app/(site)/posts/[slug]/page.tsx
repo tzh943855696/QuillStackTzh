@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, User } from 'lucide-react';
+import { Calendar, User, Clock, Tag } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PixelBreadcrumb, { breadcrumbPresets } from '@/components/site/PixelBreadcrumb';
@@ -130,7 +130,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     {settings.author && (
                       <Image src={settings.author.avatarUrl} alt={settings.author.avatarHint} width={40} height={40} className="rounded-full" />
                     )}
-                    <div className="flex items-center space-x-4">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                       <div className="flex items-center space-x-2">
                         <User className="h-4 w-4" />
                         <span>{settings.author.name}</span>
@@ -141,6 +141,12 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                           {format(new Date(article.publishedAt), 'yyyy年MM月dd日')}
                         </time>
                       </div>
+                      {article.readingTime > 0 && (
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4" />
+                          <span>{article.readingTime} 分钟阅读</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                   {article.category && (
@@ -168,13 +174,34 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </div>
           
           {/* 目录侧边栏 - 仅在桌面端显示 */}
-          {headings.length > 0 && (
-            <aside className="hidden lg:block w-64 flex-shrink-0">
-              <div className="sticky top-24">
+          <aside className="hidden lg:block w-64 flex-shrink-0">
+            <div className="sticky top-24 space-y-4">
+              {headings.length > 0 && (
                 <TableOfContents items={headings} className="bg-card border rounded-lg p-4" />
-              </div>
-            </aside>
-          )}
+              )}
+              {/* 标签展示 */}
+              {article.tags && article.tags.length > 0 && (
+                <div className="bg-card border rounded-lg p-4">
+                  <h3 className="mb-3 text-sm font-semibold text-foreground flex items-center gap-2">
+                    <Tag className="h-4 w-4" />
+                    标签
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {article.tags.map((tag) => (
+                      <Link key={tag} href={`/tags/${encodeURIComponent(tag)}`}>
+                        <Badge
+                          variant="secondary"
+                          className="text-xs hover:bg-secondary/80 transition-colors cursor-pointer"
+                        >
+                          {tag}
+                        </Badge>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </aside>
         </div>
       </div>
     </>

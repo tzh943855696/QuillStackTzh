@@ -4,6 +4,7 @@ import type { Article, AuthorSettings } from '@/lib/types';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
+import { Clock, Tag } from 'lucide-react';
 import PostCardStats from './PostCardStats';
 
 type PostCardProps = {
@@ -55,13 +56,46 @@ export default function PostCard({ article, author }: PostCardProps) {
                   <Link href={`/posts/${article.slug}`} className="hover:text-primary transition-colors">{article.title}</Link>
                 </h2>
                 <p className="text-muted-foreground text-base flex-grow mb-4">{article.excerpt}</p>
+
+                {/* 标签展示 */}
+                {article.tags && article.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {article.tags.slice(0, 3).map((tag) => (
+                      <Link key={tag} href={`/tags/${encodeURIComponent(tag)}`}>
+                        <Badge
+                          variant="outline"
+                          className="text-xs hover:bg-secondary/50 transition-colors"
+                        >
+                          <Tag className="h-3 w-3 mr-1" />
+                          {tag}
+                        </Badge>
+                      </Link>
+                    ))}
+                    {article.tags.length > 3 && (
+                      <Badge variant="outline" className="text-xs">
+                        +{article.tags.length - 3}
+                      </Badge>
+                    )}
+                  </div>
+                )}
+
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mt-auto">
                     {author && (
                         <Image src={author.avatarUrl} alt={author.avatarHint} width={24} height={24} className="rounded-full" />
                     )}
                     <span className="font-medium">{author?.name}</span>
-                    
+
                     <PostCardStats />
+
+                    {article.readingTime > 0 && (
+                      <>
+                        <span className="hidden md:block">&bull;</span>
+                        <div className="hidden md:flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          <span>{article.readingTime} 分钟</span>
+                        </div>
+                      </>
+                    )}
 
                      <span className="hidden md:block">&bull;</span>
                     <time dateTime={article.publishedAt} className="hidden md:block">

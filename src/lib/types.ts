@@ -135,6 +135,8 @@ export const articleSchema = z.object({
   content: z.string().optional(),
   categoryId: z.string().optional(),
   category: categorySchema.optional(), // Will be populated by getArticles
+  tags: z.array(z.string()).default([]),
+  readingTime: z.number().default(0),
 });
 
 export type HeaderSettings = z.infer<typeof headerSettingsSchema>;

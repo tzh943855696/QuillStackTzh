@@ -108,3 +108,60 @@
 .breadcrumb-fade-in {
   animation: breadcrumb-fade-in 0.3s ease-out;
 }
+
+/* Admonition 提示框样式 */
+.admonition {
+  @apply my-6 rounded-lg border border-l-4 p-4;
+}
+
+.admonition-content p:first-child {
+  @apply mt-0;
+}
+
+.admonition-content p:last-child {
+  @apply mb-0;
+}
+
+.admonition-content ul,
+.admonition-content ol {
+  @apply my-2 pl-5;
+}
+
+.admonition-content li {
+  @apply my-1;
+}
+
+.admonition-content code {
+  @apply px-1.5 py-0.5 rounded text-sm font-mono bg-black/5 dark:bg-white/10;
+}
+
+.admonition-content a {
+  @apply underline underline-offset-2;
+}
+
+.admonition-content strong {
+  @apply font-semibold;
+}
+
+/* 自定义滚动条样式 */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted)) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted));
+  border-radius: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.5);
+}

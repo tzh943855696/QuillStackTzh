@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import type { SiteSettings, Article, Category, FriendLinkSettings } from './types';
+import { calculateReadingTime } from './utils';
 
 // This file uses 'fs' and 'path', so it should only be imported on the server.
 // To use its functions on the client, you must wrap them in a client-side
@@ -32,13 +33,28 @@ export async function getArticles(): Promise<Article[]> {
   const siteDoc = await readJsonFile<{ articles: Article[] }>(siteDocPath);
   const settings = await getSiteSettings();
   const categoriesById = new Map(settings.categories.map(cat => [cat.id, cat]));
-  
+
   const articlesWithCategories = siteDoc.articles.map(article => {
     const category = article.categoryId ? categoriesById.get(article.categoryId) : undefined;
     return { ...article, category };
   });
 
-  return articlesWithCategories.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  // 加载每篇文章的内容并计算阅读时间
+  const articlesWithReadingTime: Article[] = [];
+  for (const article of articlesWithCategories) {
+    let content = '';
+    if (article.contentPath) {
+      try {
+        content = await fs.readFile(path.join(process.cwd(), 'content', 'posts', article.contentPath), 'utf-8');
+      } catch {
+        // 如果文件不存在，忽略错误
+      }
+    }
+    const readingTime = calculateReadingTime(content || article.excerpt || '');
+    articlesWithReadingTime.push({ ...article, readingTime });
+  }
+
+  return articlesWithReadingTime.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
 export async function getArticle(idOrSlug: string): Promise<Article | undefined> {
@@ -51,10 +67,12 @@ export async function getArticle(idOrSlug: string): Promise<Article | undefined>
   }
 
   try {
-    const content = await fs.readFile(path.join(process.cwd(), articleMeta.contentPath), 'utf-8');
+    const content = await fs.readFile(path.join(process.cwd(), 'content', 'posts', articleMeta.contentPath), 'utf-8');
+    const readingTime = calculateReadingTime(content);
     return {
       ...articleMeta,
       content,
+      readingTime,
     };
   } catch (error) {
     console.error(`Error reading article content for ${idOrSlug}:`, error);
