@@ -37,6 +37,13 @@
     --sidebar-accent-foreground: 240 5% 45%;
     --sidebar-border: 240 5% 89%;
     --sidebar-ring: 34 90% 65%;
+
+    /* Portfolio (weihangli) palette - 独立命名空间，避免影响其他页面 */
+    --portfolio-bg: 60 9% 90%;
+    --portfolio-surface: 30 6% 4%;
+    --portfolio-surface-foreground: 60 7% 80%;
+    --portfolio-surface-border: 30 8% 21%;
+    --portfolio-contact-surface-top: 36 13% 9%;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -107,4 +114,26 @@
 
 .breadcrumb-fade-in {
   animation: breadcrumb-fade-in 0.3s ease-out;
+}
+
+/* Portfolio - 联系区渐变与表面 */
+.bg-portfolio-contact-gradient {
+  background-image: linear-gradient(
+    180deg,
+    hsl(var(--portfolio-contact-surface-top)),
+    hsl(var(--portfolio-surface)) 20%,
+    hsl(var(--portfolio-surface-border))
+  );
+}
+.bg-portfolio-contact-radial {
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgb(255 255 255 / 0.04),
+    transparent
+  );
+}
+.surface-portfolio-contact-form {
+  background-color: hsl(var(--portfolio-surface-foreground) / 0.05);
+  border-color: rgb(255 255 255 / 0.1);
+  box-shadow: 0 4px 30px rgb(0 0 0 / 0.1);
 }
