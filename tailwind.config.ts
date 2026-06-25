@@ -13,6 +13,7 @@ export default {
         body: ['PT Sans', 'sans-serif'],
         headline: ['Space Grotesk', 'sans-serif'],
         code: ['monospace'],
+        figtree: ['var(--font-figtree)', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -64,6 +65,13 @@ export default {
           'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
+        },
+        // Portfolio (weihangli) - 独立调色板，避免侵入全局
+        portfolio: {
+          bg: 'hsl(var(--portfolio-bg))',
+          surface: 'hsl(var(--portfolio-surface))',
+          'surface-foreground': 'hsl(var(--portfolio-surface-foreground))',
+          'surface-border': 'hsl(var(--portfolio-surface-border))',
         },
       },
       borderRadius: {

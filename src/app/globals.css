@@ -37,6 +37,13 @@
     --sidebar-accent-foreground: 240 5% 45%;
     --sidebar-border: 240 5% 89%;
     --sidebar-ring: 34 90% 65%;
+
+    /* Portfolio (weihangli) palette - 独立命名空间，避免影响其他页面 */
+    --portfolio-bg: 60 9% 90%;
+    --portfolio-surface: 30 6% 4%;
+    --portfolio-surface-foreground: 60 7% 80%;
+    --portfolio-surface-border: 30 8% 21%;
+    --portfolio-contact-surface-top: 36 13% 9%;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -109,59 +116,24 @@
   animation: breadcrumb-fade-in 0.3s ease-out;
 }
 
-/* Admonition 提示框样式 */
-.admonition {
-  @apply my-6 rounded-lg border border-l-4 p-4;
+/* Portfolio - 联系区渐变与表面 */
+.bg-portfolio-contact-gradient {
+  background-image: linear-gradient(
+    180deg,
+    hsl(var(--portfolio-contact-surface-top)),
+    hsl(var(--portfolio-surface)) 20%,
+    hsl(var(--portfolio-surface-border))
+  );
 }
-
-.admonition-content p:first-child {
-  @apply mt-0;
+.bg-portfolio-contact-radial {
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgb(255 255 255 / 0.04),
+    transparent
+  );
 }
-
-.admonition-content p:last-child {
-  @apply mb-0;
-}
-
-.admonition-content ul,
-.admonition-content ol {
-  @apply my-2 pl-5;
-}
-
-.admonition-content li {
-  @apply my-1;
-}
-
-.admonition-content code {
-  @apply px-1.5 py-0.5 rounded text-sm font-mono bg-black/5 dark:bg-white/10;
-}
-
-.admonition-content a {
-  @apply underline underline-offset-2;
-}
-
-.admonition-content strong {
-  @apply font-semibold;
-}
-
-/* 自定义滚动条样式 */
-.scrollbar-thin {
-  scrollbar-width: thin;
-  scrollbar-color: hsl(var(--muted)) transparent;
-}
-
-.scrollbar-thin::-webkit-scrollbar {
-  width: 4px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--muted));
-  border-radius: 2px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(var(--muted-foreground) / 0.5);
+.surface-portfolio-contact-form {
+  background-color: hsl(var(--portfolio-surface-foreground) / 0.05);
+  border-color: rgb(255 255 255 / 0.1);
+  box-shadow: 0 4px 30px rgb(0 0 0 / 0.1);
 }
