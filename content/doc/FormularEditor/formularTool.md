@@ -5,29 +5,6 @@
 
 ---
 
-## 包结构
-
-```
-formular-editor/view/src/
-├── index.vue          # 主组件，整个编辑器的唯一入口
-├── index.ts           # 包导出：FormularView / Cascader / FUNC_LIST_DEF / 类型定义
-├── typing.d.ts        # 类型定义（ICascaderNode、IShowFuncData 等）
-├── utils/
-│   ├── constant.ts    # 常量：CLASS_PREFIX / FUNC_KEY / DEFAULT_KEYWORD_LIST / MODEL
-│   ├── context.ts     # provide/inject（ShowTypeContext）
-│   ├── funcDef.ts     # 内置函数元数据（FUNC_LIST_DEF，共 70+ 条）
-│   └── index.ts       # 工具函数：getPrefixCls / formatFuncList / getUuid
-└── components/
-    ├── cascader/       # 级联字段选择器（核心子组件）
-    ├── tree/           # 函数分组树（两级：分类 → 函数）
-    ├── tabs/           # Tab 切换
-    ├── scrollbar/      # 滚动容器
-    ├── input/          # 搜索框
-    ├── tag/            # 类型标签
-    ├── empty/          # 空状态
-    └── icons/          # SVG 图标
-```
-
 ---
 
 ## UI 布局
