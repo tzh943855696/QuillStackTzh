@@ -121,7 +121,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="pointer-events-none relative max-h-[30rem] col-span-12 md:col-span-3 flex aspect-square w-full h-full items-center overflow-clip rounded-md sm:aspect-auto md:items-end">
               <Image
-                src="/images/portfolio/about/me.webp"
+                src="/images/about/me.webp"
                 alt="About image"
                 fill
                 sizes="(max-width: 768px) 100vw, 25vw"

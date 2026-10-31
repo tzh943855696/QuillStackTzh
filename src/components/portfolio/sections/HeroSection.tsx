@@ -9,7 +9,7 @@ import Image from "next/image";
 import { useMemo, useRef } from "react";
 
 const WIPE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
-const COVER_IMAGE = "/images/portfolio/cover.jpg";
+const COVER_IMAGE = "/images/cover.jpg";
 
 function CtaButton({
   label,

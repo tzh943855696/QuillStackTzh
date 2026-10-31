@@ -8,24 +8,24 @@ import FadeUp from "@/components/portfolio/text/FadeUp";
 
 const PROJECTS = [
   {
-    bgImage: "/images/portfolio/projects/works_bg_01.webp",
-    previewImage: "/images/portfolio/projects/works_profolio.jpg",
+    bgImage: "/images/projects/works_bg_01.webp",
+    previewImage: "/images/projects/works_profolio.jpg",
     category: "Modern Portfolio Website",
     title: "My Profolio",
     year: "2026",
     tags: ["Next.js", "Framer Motion"],
   },
   {
-    bgImage: "/images/portfolio/projects/works_bg_02.webp",
-    previewImage: "/images/portfolio/projects/works_hynel.jpg",
+    bgImage: "/images/projects/works_bg_02.webp",
+    previewImage: "/images/projects/works_hynel.jpg",
     category: "SaaS Platform",
     title: "Hynel Energy",
     year: "2025",
     tags: ["Vue", "Full-stack"],
   },
   {
-    bgImage: "/images/portfolio/projects/works_bg_03.webp",
-    previewImage: "/images/portfolio/projects/works_vehicle_search.jpg",
+    bgImage: "/images/projects/works_bg_03.webp",
+    previewImage: "/images/projects/works_vehicle_search.jpg",
     category: "Desktop Application",
     title: "Vehicle Search Script",
     year: "2025",
