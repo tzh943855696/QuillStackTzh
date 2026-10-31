@@ -1,0 +1,7 @@
+services:
+  quillstack:
+    build: .
+    container_name: quillstack
+    restart: unless-stopped
+    ports:
+      - "80:80"
